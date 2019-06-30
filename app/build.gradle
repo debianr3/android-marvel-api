@@ -8,6 +8,11 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'io.gitlab.arturbosch.detekt'
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def privateKey = properties.getProperty('marvel.api.privateKey')
+def publicKey = properties.getProperty('marvel.api.publicKey')
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -17,6 +22,14 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'BASE_URL', '"https://gateway.marvel.com/"'
+        buildConfigField 'String', 'MARVEL_API_PRIVATE_KEY', '"' + privateKey + '"'
+        buildConfigField 'String', 'MARVEL_API_PUBLIC_KEY', '"' + publicKey + '"'
+
+        // We need to display the marvel attribution:
+        // https://developer.marvel.com/documentation/attribution
+        buildConfigField 'String', 'MARVEL_ATTRIBUTION', '"Data provided by Marvel. © 2014 Marvel"'
     }
     buildTypes {
         release {
@@ -41,6 +54,7 @@ dependencies {
     def lifecycle_version = "2.0.0"
     def room_version = "2.+"
     def kotlin_coroutines_version = "1.+"
+    def koin_version = '2.0.1'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -52,6 +66,8 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -61,9 +77,19 @@ dependencies {
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.+'
+    implementation "com.squareup.retrofit2:converter-moshi:2.+"
 
     // Moshi
     implementation("com.squareup.moshi:moshi:1.+")
+
+    // Koin
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    testImplementation "org.koin:koin-test:$koin_version"
+
+    // Fresco
+    implementation 'com.facebook.fresco:fresco:2.0.0'
 
     // Test
     testImplementation("org.junit.jupiter:junit-jupiter:5.+")
