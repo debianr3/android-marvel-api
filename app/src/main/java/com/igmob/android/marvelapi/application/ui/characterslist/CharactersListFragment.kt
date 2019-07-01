@@ -15,9 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.igmob.android.marvelapi.R
 import com.igmob.android.marvelapi.domain.core.Character
-import com.igmob.android.marvelapi.domain.core.CharactersListRepository
+import com.igmob.android.marvelapi.domain.characterslist.CharactersListRepository
 import com.igmob.android.marvelapi.domain.core.Resource
-import com.igmob.android.marvelapi.infrastructure.networking.MarvelApi
+import com.igmob.android.marvelapi.infrastructure.core.networking.MarvelApi
 import okhttp3.HttpUrl
 
 class CharactersListFragment(private val repository: CharactersListRepository) : Fragment() {

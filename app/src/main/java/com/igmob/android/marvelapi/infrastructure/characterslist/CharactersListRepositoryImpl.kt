@@ -1,8 +1,8 @@
-package com.igmob.android.marvelapi.infrastructure.networking
+package com.igmob.android.marvelapi.infrastructure.characterslist
 
 import android.util.Log
 import com.igmob.android.marvelapi.domain.core.Character
-import com.igmob.android.marvelapi.domain.core.CharactersListRepository
+import com.igmob.android.marvelapi.domain.characterslist.CharactersListRepository
 import com.igmob.android.marvelapi.domain.core.Resource
 
 

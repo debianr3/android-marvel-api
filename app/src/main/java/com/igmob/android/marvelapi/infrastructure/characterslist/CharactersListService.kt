@@ -1,4 +1,4 @@
-package com.igmob.android.marvelapi.infrastructure.networking
+package com.igmob.android.marvelapi.infrastructure.characterslist
 
 import com.igmob.android.marvelapi.domain.core.Character
 import retrofit2.Response

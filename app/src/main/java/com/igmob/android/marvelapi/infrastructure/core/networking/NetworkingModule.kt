@@ -1,14 +1,20 @@
-package com.igmob.android.marvelapi.infrastructure.networking
+package com.igmob.android.marvelapi.infrastructure.core.networking
 
 import com.igmob.android.marvelapi.BuildConfig
-import com.igmob.android.marvelapi.domain.core.CharactersListRepository
+import com.igmob.android.marvelapi.domain.characterslist.CharactersListRepository
+import com.igmob.android.marvelapi.infrastructure.characterslist.CharactersListRepositoryImpl
+import com.igmob.android.marvelapi.infrastructure.characterslist.CharactersListService
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 val NetworkingModule = module {
-    single<CharactersListRepository> { CharactersListRepositoryImpl(get()) }
+    single<CharactersListRepository> {
+        CharactersListRepositoryImpl(
+            get()
+        )
+    }
 
     factory {
         provideRetrofit()
