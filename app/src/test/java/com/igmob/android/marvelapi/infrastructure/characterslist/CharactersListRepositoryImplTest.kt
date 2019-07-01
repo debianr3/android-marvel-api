@@ -1,6 +1,7 @@
-package com.igmob.android.marvelapi.infrastructure.networking
+package com.igmob.android.marvelapi.infrastructure.characterslist
 
 import com.igmob.android.marvelapi.domain.core.Resource
+import com.igmob.android.marvelapi.infrastructure.fromJson
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
@@ -54,7 +55,9 @@ internal class CharactersListRepositoryImplTest : AutoCloseKoinTest() {
     fun testGetCharactersSuccess() {
         val service = mockServiceSuccess()
         runBlocking {
-            val resource = CharactersListRepositoryImpl(service).getCharacters()
+            val resource = CharactersListRepositoryImpl(
+                service
+            ).getCharacters()
 
             if (resource is Resource.Success) {
                 Assertions.assertEquals(1011334L, resource.data!![0].id)
@@ -68,7 +71,9 @@ internal class CharactersListRepositoryImplTest : AutoCloseKoinTest() {
     fun testGetCharactersError() {
         val service = mockServiceError()
         runBlocking {
-            val resource = CharactersListRepositoryImpl(service).getCharacters()
+            val resource = CharactersListRepositoryImpl(
+                service
+            ).getCharacters()
 
             if (resource is Resource.Error) {
                 Assertions.assertEquals(500, resource.statusCode)
@@ -83,7 +88,9 @@ internal class CharactersListRepositoryImplTest : AutoCloseKoinTest() {
     fun testGetCharactersFailure() {
         val service = mockServiceFailure()
         runBlocking {
-            val resource = CharactersListRepositoryImpl(service).getCharacters()
+            val resource = CharactersListRepositoryImpl(
+                service
+            ).getCharacters()
             Assertions.assertTrue(resource is Resource.Error, "Resource is ${resource.javaClass.simpleName}")
         }
     }

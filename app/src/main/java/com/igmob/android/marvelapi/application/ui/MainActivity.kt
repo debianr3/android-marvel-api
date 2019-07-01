@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.igmob.android.marvelapi.R
 import com.igmob.android.marvelapi.application.ui.characterslist.CharactersListFragment
-import com.igmob.android.marvelapi.domain.core.CharactersListRepository
+import com.igmob.android.marvelapi.domain.characterslist.CharactersListRepository
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {

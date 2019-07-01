@@ -1,4 +1,4 @@
-package com.igmob.android.marvelapi.infrastructure.networking
+package com.igmob.android.marvelapi.infrastructure
 
 import com.squareup.moshi.Moshi
 

@@ -1,4 +1,4 @@
-package com.igmob.android.marvelapi.infrastructure.networking
+package com.igmob.android.marvelapi.infrastructure.core.networking
 
 import android.util.Log
 import com.igmob.android.marvelapi.BuildConfig

@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.igmob.android.marvelapi.domain.core.Character
-import com.igmob.android.marvelapi.domain.core.CharactersListRepository
+import com.igmob.android.marvelapi.domain.characterslist.CharactersListRepository
 import com.igmob.android.marvelapi.domain.core.Resource
 import com.igmob.android.marvelapi.domain.usecases.GetCharactersListUseCase
 import kotlinx.coroutines.CoroutineScope
